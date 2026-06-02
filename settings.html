@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Property Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-900 flex min-h-screen antialiased pb-20 md:pb-0">
+
+  <aside class="w-20 bg-white border-r border-gray-100 hidden md:flex flex-col items-center justify-between py-8 shrink-0 h-screen sticky top-0">
+    <div class="flex items-center justify-center">
+      <div class="w-10 h-10 bg-amber-500 rounded-xl flex items-center justify-center shadow-sm shadow-amber-500/20">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="white" class="w-5 h-5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+        </svg>
+      </div>
+    </div>
+
+    <nav class="flex flex-col gap-6 w-full px-3 my-auto justify-center">
+      <a href="#" class="bg-gray-900 text-white p-3.5 rounded-xl flex items-center justify-center shadow-lg shadow-gray-900/10 transition-all">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+        </svg>
+      </a>
+      
+      <a href="#" class="text-gray-400 hover:text-gray-900 p-3.5 rounded-xl flex items-center justify-center transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.604 10.604Z" />
+        </svg>
+      </a>
+
+      <a href="#" class="text-gray-400 hover:text-gray-900 p-3.5 rounded-xl flex items-center justify-center transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-2.533-4.656c-.9-.374-1.856-.633-2.848-.774M15 19.128v-.75a9.06 9.06 0 0 0-1.5-4.823M15 19.128a9.349 9.349 0 0 1-6 0M15 19.128v-.75a8.908 8.908 0 0 0-1.422-4.717M9.75 19.128a9.38 9.38 0 0 1-2.625.372 9.337 9.337 0 0 1-4.121-.952 4.125 4.125 0 0 1 2.533-4.656c.9-.374 1.856-.633 2.848-.774M9.75 19.128v-.75a9.06 9.06 0 0 1 1.5-4.823M9.3 16.515a8.908 8.908 0 0 1 1.422-4.717M10.5 11.25a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM16.5 7.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+        </svg>
+      </a>
+
+      <a href="#" class="text-gray-400 hover:text-gray-900 p-3.5 rounded-xl flex items-center justify-center transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z" />
+        </svg>
+      </a>
+    </nav>
+
+    <div class="mt-auto">
+      <a href="#" class="text-gray-400 hover:text-gray-900 p-2 rounded-xl flex items-center justify-center transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+        </svg>
+      </a>
+    </div>
+  </aside>
+
+  <div class="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-lg border-t border-gray-100 px-6 py-3 flex items-center justify-between shadow-xl">
+    <a href="index.html" class="bg-gray-900 text-white p-3 rounded-xl flex items-center justify-center shadow-md shadow-gray-900/10">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+      </svg>
+    </a>
+    <a href="search.html" class="text-gray-400 hover:text-gray-900 p-3 rounded-xl transition-colors">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.604 10.604Z" />
+      </svg>
+    </a>
+    <a href="agents.html" class="text-gray-400 hover:text-gray-900 p-3 rounded-xl transition-colors">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-2.533-4.656c-.9-.374-1.856-.633-2.848-.774M15 19.128v-.75a9.06 9.06 0 0 0-1.5-4.823M15 19.128a9.349 9.349 0 0 1-6 0M15 19.128v-.75a8.908 8.908 0 0 0-1.422-4.717M9.75 19.128a9.38 9.38 0 0 1-2.625.372 9.337 9.337 0 0 1-4.121-.952 4.125 4.125 0 0 1 2.533-4.656c.9-.374 1.856-.633 2.848-.774M9.75 19.128v-.75a9.06 9.06 0 0 1 1.5-4.823M9.3 16.515a8.908 8.908 0 0 1 1.422-4.717M10.5 11.25a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM16.5 7.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+      </svg>
+    </a>
+    <a href="bookmarks.html" class="text-gray-400 hover:text-gray-900 p-3 rounded-xl transition-colors">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z" />
+      </svg>
+    </a>
+    <a href="settings.html" class="text-gray-400 hover:text-gray-900 p-2 rounded-xl transition-colors">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+      </svg>
+    </a>
+  </div>
+
+  <main class="flex-1 bg-white md:m-4 md:rounded-3xl border border-gray-100 shadow-sm px-4 md:px-8 py-10 flex flex-col gap-10">
+
+  </main>
+</body>
+</html>
