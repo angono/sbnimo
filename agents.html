@@ -5,14 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Agents</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     body { font-family: 'Inter', sans-serif; }
+    [v-cloak] { display: none; }
   </style>
 </head>
-<body class="bg-gray-50 text-gray-900 flex min-h-screen antialiased pb-20 md:pb-0">
+<body id="app" v-cloak class="bg-gray-50 text-gray-900 flex min-h-screen antialiased pb-20 md:pb-0">
 
   <aside class="w-20 bg-white border-r border-gray-100 hidden md:flex flex-col items-center justify-between py-8 shrink-0 h-screen sticky top-0">
     <div class="flex items-center justify-center">
@@ -102,113 +104,21 @@
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-12">
       
-      <div class="flex flex-col group">
+      <div v-for="agent in agents" :key="agent.name" class="flex flex-col group">
         <div class="aspect-[4/5] w-full overflow-hidden rounded-2xl bg-gray-100 mb-5 relative">
-          <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=600" 
-               alt="Jessy King" 
+          <img :src="agent.image" 
+               :alt="agent.name" 
                class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300">
         </div>
         <div class="flex flex-col gap-3">
           <div class="flex items-baseline justify-between">
-            <h2 class="text-xl font-bold tracking-tight text-gray-900">Jessy King</h2>
-            <span class="text-[13px] font-medium text-gray-400">Commercial Broker</span>
+            <h2 class="text-xl font-bold tracking-tight text-gray-900">{{ agent.name }}</h2>
+            <span class="text-[13px] font-medium text-gray-400">{{ agent.role }}</span>
           </div>
           <p class="text-[14px] leading-relaxed text-gray-500 line-clamp-3">
-            Whether assisting a first-time homebuyer, listing a luxury property, or guiding a seasoned investor...
+            {{ agent.bio }}
           </p>
-          <a href="agent-details.html" class="inline-flex items-center gap-1.5 text-[14px] font-semibold text-gray-900 hover:text-amber-500 transition-colors w-fit mt-1">
-            View Agent 
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-3.5 h-3.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-            </svg>
-          </a>
-        </div>
-      </div>
-
-      <div class="flex flex-col group">
-        <div class="aspect-[4/5] w-full overflow-hidden rounded-2xl bg-gray-100 mb-5 relative">
-          <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&q=80&w=600" 
-               alt="Chloe Waterwood" 
-               class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300">
-        </div>
-        <div class="flex flex-col gap-3">
-          <div class="flex items-baseline justify-between">
-            <h2 class="text-xl font-bold tracking-tight text-gray-900">Chloe Waterwood</h2>
-            <span class="text-[13px] font-medium text-gray-400">Realtor</span>
-          </div>
-          <p class="text-[14px] leading-relaxed text-gray-500 line-clamp-3">
-            Whether assisting a first-time homebuyer, listing a luxury property, or guiding a seasoned investor...
-          </p>
-          <a href="agent-details.html" class="inline-flex items-center gap-1.5 text-[14px] font-semibold text-gray-900 hover:text-amber-500 transition-colors w-fit mt-1">
-            View Agent 
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-3.5 h-3.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-            </svg>
-          </a>
-        </div>
-      </div>
-
-      <div class="flex flex-col group">
-        <div class="aspect-[4/5] w-full overflow-hidden rounded-2xl bg-gray-100 mb-5 relative">
-          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=600" 
-               alt="Mike Rutter" 
-               class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300">
-        </div>
-        <div class="flex flex-col gap-3">
-          <div class="flex items-baseline justify-between">
-            <h2 class="text-xl font-bold tracking-tight text-gray-900">Mike Rutter</h2>
-            <span class="text-[13px] font-medium text-gray-400">Commercial Broker</span>
-          </div>
-          <p class="text-[14px] leading-relaxed text-gray-500 line-clamp-3">
-            Whether assisting a first-time homebuyer, listing a luxury property, or guiding a seasoned investor...
-          </p>
-          <a href="#" class="inline-flex items-center gap-1.5 text-[14px] font-semibold text-gray-900 hover:text-amber-500 transition-colors w-fit mt-1">
-            View Agent 
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-3.5 h-3.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-            </svg>
-          </a>
-        </div>
-      </div>
-
-      <div class="flex flex-col group">
-        <div class="aspect-[4/5] w-full overflow-hidden rounded-2xl bg-gray-100 mb-5 relative">
-          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=600" 
-               alt="Sarah Jenkins" 
-               class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300">
-        </div>
-        <div class="flex flex-col gap-3">
-          <div class="flex items-baseline justify-between">
-            <h2 class="text-xl font-bold tracking-tight text-gray-900">Sarah Jenkins</h2>
-            <span class="text-[13px] font-medium text-gray-400">Real Estate Broker</span>
-          </div>
-          <p class="text-[14px] leading-relaxed text-gray-500 line-clamp-3">
-            Specializing in high-end residential real estate developments, asset valuations, and local market analysis...
-          </p>
-          <a href="#" class="inline-flex items-center gap-1.5 text-[14px] font-semibold text-gray-900 hover:text-amber-500 transition-colors w-fit mt-1">
-            View Agent 
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-3.5 h-3.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-            </svg>
-          </a>
-        </div>
-      </div>
-
-      <div class="flex flex-col group">
-        <div class="aspect-[4/5] w-full overflow-hidden rounded-2xl bg-gray-100 mb-5 relative">
-          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=600" 
-               alt="David Vance" 
-               class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300">
-        </div>
-        <div class="flex flex-col gap-3">
-          <div class="flex items-baseline justify-between">
-            <h2 class="text-xl font-bold tracking-tight text-gray-900">David Vance</h2>
-            <span class="text-[13px] font-medium text-gray-400">Property Consultant</span>
-          </div>
-          <p class="text-[14px] leading-relaxed text-gray-500 line-clamp-3">
-            Providing tailored investment strategies for commercial real estate portfolios and residential listings...
-          </p>
-          <a href="#" class="inline-flex items-center gap-1.5 text-[14px] font-semibold text-gray-900 hover:text-amber-500 transition-colors w-fit mt-1">
+          <a :href="agent.profileUrl" class="inline-flex items-center gap-1.5 text-[14px] font-semibold text-gray-900 hover:text-amber-500 transition-colors w-fit mt-1">
             View Agent 
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-3.5 h-3.5">
               <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
@@ -220,5 +130,54 @@
     </div>
   </main>
 
+  <script>
+    const { createApp, ref } = Vue;
+
+    createApp({
+      setup() {
+        const agents = ref([
+          {
+            name: "Jessy King",
+            role: "Commercial Broker",
+            image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=600",
+            bio: "Whether assisting a first-time homebuyer, listing a luxury property, or guiding a seasoned investor...",
+            profileUrl: "agent-details.html"
+          },
+          {
+            name: "Chloe Waterwood",
+            role: "Realtor",
+            image: "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&q=80&w=600",
+            bio: "Whether assisting a first-time homebuyer, listing a luxury property, or guiding a seasoned investor...",
+            profileUrl: "agent-details.html"
+          },
+          {
+            name: "Mike Rutter",
+            role: "Commercial Broker",
+            image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=600",
+            bio: "Whether assisting a first-time homebuyer, listing a luxury property, or guiding a seasoned investor...",
+            profileUrl: "agent-details.html"
+          },
+          {
+            name: "Sarah Jenkins",
+            role: "Real Estate Broker",
+            image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=600",
+            bio: "Specializing in high-end residential real estate developments, asset valuations, and local market analysis...",
+            profileUrl: "agent-details.html"
+          },
+          {
+            name: "David Vance",
+            role: "Property Consultant",
+            image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=600",
+            bio: "Providing tailored investment strategies for commercial real estate portfolios and residential listings...",
+            profileUrl: "agent-details.html"
+          }
+        ]);
+
+        return {
+          agents
+        };
+      }
+    }).mount('#app');
+  </script>
 </body>
 </html>
