@@ -74,7 +74,7 @@
     </a>
     <a href="agents.html" class="text-gray-400 hover:text-gray-900 p-3 rounded-xl transition-colors">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-2.533-4.656c-.9-.374-1.856-.633-2.848-.774M15 19.128v-.75a9.06 9.06 0 0 0-1.5-4.823M15 19.128a9.349 9.349 0 0 1-6 0M15 19.128v-.75a8.908 8.908 0 0 0-1.422-4.717M9.75 19.128a9.38 9.38 0 0 1-2.625.372 9.337 9.337 0 0 1-4.121-.952 4.125 4.125 0 0 1 2.533-4.656c.9-.374 1.856-.633 2.848-.774M9.75 19.128v-.75a9.06 9.06 0 0 1 1.5-4.823M9.3 16.515a8.908 8.908 0 0 1 1.422-4.717M10.5 11.25a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM16.5 7.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-2.533-4.656c-.9-.374-1.856-.633-2.848-.774M15 19.128v-.75a9.06 9.06 0 0 0-1.5-4.823M15 19.128a9.349 9.349 0 0 1-6 0M15 19.128v-.75a8.908 8.908 0 0 0-1.422-4.717M9.75 19.128a9.38 9.38 0 0 1-2.625.372 9.337 9.337 0 0 1-4.121-.952 4.125 4.125 0 0 1 2.533-4.656c.9-.374-1.856-.633 2.848-.774M9.75 19.128v-.75a9.06 9.06 0 0 1 1.5-4.823M9.3 16.515a8.908 8.908 0 0 1 1.422-4.717M10.5 11.25a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM16.5 7.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
       </svg>
     </a>
     <a href="bookmarks.html" class="text-gray-400 hover:text-gray-900 p-3 rounded-xl transition-colors">
@@ -370,21 +370,99 @@
       <h3 class="text-xs font-bold uppercase tracking-wider text-gray-400">Map</h3>
       <div class="w-full h-80 rounded-2xl overflow-hidden bg-gray-100 relative border border-gray-200">
         <div class="absolute inset-0 bg-[#e5e3df] opacity-90 pattern-grid-lg">
-          <!-- <img src="image_2e62c6.jpg" alt="Map Location Overview" class="w-full h-full object-cover"> -->
-
-        <iframe class="w-full h-full object-cover" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q=grenoble,france" width="100%" height="100%" frameborder="1" style="border:2px" allowfullscreen=""></iframe>
-
+          <iframe class="w-full h-full object-cover" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q=grenoble,france" width="100%" height="100%" frameborder="1" style="border:2px" allowfullscreen=""></iframe>
         </div>
       </div>
     </div>
 
+    <div class="border-t border-gray-100 pt-10 flex flex-col gap-6">
+      <h3 class="text-xs font-bold uppercase tracking-wider text-gray-400">Energy Efficiency</h3>
+      
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        
+        <div>
+          <div class="flex items-baseline justify-between mb-6">
+            <h4 class="text-sm font-semibold text-gray-900">Energy Consumption (DPE)</h4>
+            <span class="text-xs font-medium text-gray-400">kWh/m²·year</span>
+          </div>
+          
+          <div class="flex flex-col gap-1 max-w-md">
+            <div class="flex items-center justify-between h-8">
+              <div class="w-[35%] bg-[#009640] text-white font-bold text-xs flex items-center px-3 h-full rounded-r-md transition-all shadow-sm">A &le; 70</div>
+            </div>
+            <div class="flex items-center justify-between h-8">
+              <div class="w-[43%] bg-[#32b24a] text-white font-bold text-xs flex items-center px-3 h-full rounded-r-md transition-all shadow-sm">B 71 - 110</div>
+            </div>
+            <div class="flex items-center justify-between h-8">
+              <div class="w-[51%] bg-[#a3d144] text-white font-bold text-xs flex items-center px-3 h-full rounded-r-md transition-all shadow-sm">C 111 - 180</div>
+            </div>
+            <div class="flex items-center h-10 relative my-0.5">
+              <div class="w-[62%] bg-[#fff200] text-gray-900 font-extrabold text-sm flex items-center px-3 h-full rounded-r-md shadow-md border-y border-r border-yellow-400/40 z-10">
+                D 181 - 250
+              </div>
+              <div class="absolute left-[62%] ml-3 bg-gray-900 text-white font-bold text-xs px-3 py-1.5 rounded-lg flex items-center gap-1.5 shadow-md animate-pulse">
+                <span class="w-2 h-2 rounded-full bg-[#fff200]"></span>
+                <span>211 Value</span>
+              </div>
+            </div>
+            <div class="flex items-center justify-between h-8">
+              <div class="w-[70%] bg-[#ffc20e] text-white font-bold text-xs flex items-center px-3 h-full rounded-r-md transition-all shadow-sm">E 251 - 330</div>
+            </div>
+            <div class="flex items-center justify-between h-8">
+              <div class="w-[82%] bg-[#f37022] text-white font-bold text-xs flex items-center px-3 h-full rounded-r-md transition-all shadow-sm">F 331 - 420</div>
+            </div>
+            <div class="flex items-center justify-between h-8">
+              <div class="w-[95%] bg-[#eb1c24] text-white font-bold text-xs flex items-center px-3 h-full rounded-r-md transition-all shadow-sm">G &gt; 420</div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="flex items-baseline justify-between mb-6">
+            <h4 class="text-sm font-semibold text-gray-900">Greenhouse Gas Emissions (GES)</h4>
+            <span class="text-xs font-medium text-gray-400">kg CO&sub2;/m²·year</span>
+          </div>
+          
+          <div class="flex flex-col gap-1 max-w-md">
+            <div class="flex items-center justify-between h-8">
+              <div class="w-[35%] bg-[#f3f1f7] text-[#6a4ca0] font-bold text-xs flex items-center px-3 h-full rounded-r-md border border-purple-100 shadow-sm">A &le; 6</div>
+            </div>
+            <div class="flex items-center justify-between h-8">
+              <div class="w-[43%] bg-[#e3def0] text-[#6a4ca0] font-bold text-xs flex items-center px-3 h-full rounded-r-md shadow-sm">B 7 - 11</div>
+            </div>
+            <div class="flex items-center h-10 relative my-0.5">
+              <div class="w-[53%] bg-[#6a4ca0] text-white font-extrabold text-sm flex items-center px-3 h-full rounded-r-md shadow-md z-10">
+                C 12 - 30
+              </div>
+              <div class="absolute left-[53%] ml-3 bg-gray-900 text-white font-bold text-xs px-3 py-1.5 rounded-lg flex items-center gap-1.5 shadow-md">
+                <span class="w-2 h-2 rounded-full bg-[#bcaed4]"></span>
+                <span>24 Value</span>
+              </div>
+            </div>
+            <div class="flex items-center justify-between h-8">
+              <div class="w-[65%] bg-[#bcaed4] text-white font-bold text-xs flex items-center px-3 h-full rounded-r-md shadow-sm">D 31 - 50</div>
+            </div>
+            <div class="flex items-center justify-between h-8">
+              <div class="w-[76%] bg-[#9683be] text-white font-bold text-xs flex items-center px-3 h-full rounded-r-md shadow-sm">E 51 - 70</div>
+            </div>
+            <div class="flex items-center justify-between h-8">
+              <div class="w-[87%] bg-[#513689] text-white font-bold text-xs flex items-center px-3 h-full rounded-r-md shadow-sm">F 71 - 100</div>
+            </div>
+            <div class="flex items-center justify-between h-8">
+              <div class="w-[98%] bg-[#362259] text-white font-bold text-xs flex items-center px-3 h-full rounded-r-md shadow-sm">G &gt; 100</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
     <div class="fixed bottom-20 md:bottom-6 right-6 z-40">
-      <button class="bg-[#111316] text-white pl-5 pr-4 py-3 rounded-xl flex items-center gap-3 shadow-2xl shadow-black/30 hover:bg-gray-800 transition-colors text-sm font-medium tracking-tight">
+      <a href="agents.html" class="bg-[#111316] text-white pl-5 pr-4 py-3 rounded-xl flex items-center gap-3 shadow-2xl shadow-black/30 hover:bg-gray-800 transition-colors text-sm font-medium tracking-tight">
         <span>Contact Agent</span>
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 text-gray-400">
           <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
         </svg>
-      </button>
+      </a>
     </div>
 
   </main>
