@@ -53,7 +53,7 @@
 
     <div class="mt-auto">
       <a href="settings.html" class="text-gray-400 hover:text-gray-900 p-2 rounded-xl flex items-center justify-center transition-colors">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+        <svg xmlns="http://www.w3.org/2000/xl" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
           <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
         </svg>
       </a>
@@ -73,7 +73,7 @@
     </a>
     <a href="agents.html" class="text-gray-400 hover:text-gray-900 p-3 rounded-xl transition-colors">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-2.533-4.656c-.9-.374-1.856-.633-2.848-.774M15 19.128v-.75a9.06 9.06 0 0 0-1.5-4.823M15 19.128a9.349 9.349 0 0 1-6 0M15 19.128v-.75a8.908 8.908 0 0 0-1.422-4.717M9.75 19.128a9.38 9.38 0 0 1-2.625.372 9.337 9.337 0 0 1-4.121-.952 4.125 4.125 0 0 1 2.533-4.656c.9-.374 1.856-.633 2.848-.774M9.75 19.128v-.75a9.06 9.06 0 0 1 1.5-4.823M9.3 16.515a8.908 8.908 0 0 1 1.422-4.717M10.5 11.25a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM16.5 7.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-2.533-4.656c-.9-.374-1.856-.633-2.848-.774M15 19.128v-.75a9.06 9.06 0 0 0-1.5-4.823M15 19.128a9.349 9.349 0 0 1-6 0M15 19.128v-.75a8.908 8.908 0 0 0-1.422-4.717M9.75 19.128a9.38 9.38 0 0 1-2.625.372 9.337 9.337 0 0 1-4.121-.952 4.125 4.125 0 0 1 2.533-4.656c.9-.374 1.856-.633-2.848-.774M9.75 19.128v-.75a9.06 9.06 0 0 1 1.5-4.823M9.3 16.515a8.908 8.908 0 0 1 1.422-4.717M10.5 11.25a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM16.5 7.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
       </svg>
     </a>
     <a href="bookmarks.html" class="text-gray-400 hover:text-gray-900 p-3 rounded-xl transition-colors">
@@ -125,6 +125,7 @@
 
     <div class="flex gap-8 items-start relative flex-1">
       
+      <!-- Desktop Sidebar Filters -->
       <aside class="w-64 shrink-0 bg-gray-50/50 border border-gray-100 rounded-2xl p-5 sticky top-6 hidden md:block">
         <div class="flex items-center justify-between mb-5">
           <h2 class="font-semibold text-sm uppercase tracking-wider text-gray-400">Filter Criteria</h2>
@@ -132,12 +133,28 @@
         </div>
         
         <div class="flex flex-col gap-5">
+          <!-- Property Listing Purpose Filter Switch -->
+          <div>
+            <label class="block text-xs font-semibold text-gray-700 mb-2">Listing Purpose</label>
+            <div class="grid grid-cols-3 gap-1 bg-white p-1 border border-gray-200 rounded-xl">
+              <button 
+                v-for="purpose in ['', 'Sale', 'Rent']" 
+                :key="purpose"
+                @click="filters.purpose = purpose"
+                :class="filters.purpose === purpose ? 'bg-gray-900 text-white shadow-sm' : 'text-gray-600 hover:bg-gray-50'"
+                class="py-1.5 text-xs font-medium rounded-lg transition-all"
+              >
+                {{ purpose === '' ? 'All' : purpose }}
+              </button>
+            </div>
+          </div>
+
           <div>
             <label class="block text-xs font-semibold text-gray-700 mb-2">Property Type</label>
             <select v-model="filters.type" class="w-full bg-white border border-gray-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:border-amber-500 transition-all">
               <option value="">All Types</option>
               <option value="Apartment">Apartment</option>
-              <option value="Villa">Villa / House</option>
+              <option value="Houses">Houses</option>
               <option value="Studio">Studio</option>
               <option value="Office">Commercial Office</option>
             </select>
@@ -165,20 +182,6 @@
               </button>
             </div>
           </div>
-
-          <div>
-            <label class="block text-xs font-semibold text-gray-700 mb-2">Amenities</label>
-            <div class="space-y-2">
-              <label class="flex items-center gap-2.5 text-sm font-normal text-gray-600 cursor-pointer select-none">
-                <input type="checkbox" v-model="filters.pool" class="w-4 h-4 rounded border-gray-300 text-amber-500 focus:ring-amber-500/20">
-                <span>Swimming Pool</span>
-              </label>
-              <label class="flex items-center gap-2.5 text-sm font-normal text-gray-600 cursor-pointer select-none">
-                <input type="checkbox" v-model="filters.parking" class="w-4 h-4 rounded border-gray-300 text-amber-500 focus:ring-amber-500/20">
-                <span>Private Parking</span>
-              </label>
-            </div>
-          </div>
         </div>
       </aside>
 
@@ -198,54 +201,78 @@
           <p class="text-xs text-gray-500 mt-1">Try relaxing or shifting filters to open up wider matching contexts.</p>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
-          <article 
+        <!-- Corrected Properties Grid matching the original card visual design layout -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-y-10 gap-x-6">
+          <div 
             v-for="item in filteredProperties" 
             :key="item.id" 
-            class="group bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all flex flex-col"
+            class="flex flex-col gap-4 group"
           >
-            <div class="relative pt-[60%] bg-gray-100 overflow-hidden">
-              <div class="absolute inset-0 bg-gradient-to-t from-gray-900/40 via-transparent to-transparent z-10"></div>
-              <img :src="item.image" :alt="item.title" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-              <span class="absolute top-3 left-3 bg-white/90 backdrop-blur-md text-gray-900 text-xs font-semibold px-2.5 py-1 rounded-lg z-20 shadow-sm">
-                {{ item.type }}
-              </span>
-              <span class="absolute bottom-3 right-3 text-white text-lg font-bold z-20">
-                ${{ item.price.toLocaleString() }}<span class="text-xs font-normal opacity-80">/mo</span>
-              </span>
-            </div>
-
-            <div class="p-4 flex flex-col gap-3 flex-1 justify-between">
-              <div>
-                <h3 class="font-semibold text-gray-900 text-base line-clamp-1 group-hover:text-amber-600 transition-colors">
-                  {{ item.title }}
-                </h3>
-                <p class="text-xs text-gray-500 flex items-center gap-1 mt-1">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-3.5 h-3.5 text-gray-400 shrink-0">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
-                  </svg>
-                  {{ item.location }}
-                </p>
+            <!-- Card Thumbnail Overlay Cover Image Media Window -->
+            <div class="aspect-[1.53] w-full rounded-2xl overflow-hidden bg-gray-100 relative shadow-sm">
+              <img :src="item.image" :alt="item.title" class="w-full h-full object-cover group-hover:scale-[1.015] transition-transform duration-300">
+              
+              <!-- Badges Placement Overlay Blocks Inside Hero Frame -->
+              <div class="absolute bottom-4 left-4 flex gap-1.5 z-10">
+                <span class="bg-white/90 backdrop-blur text-gray-900 text-[12px] font-semibold px-2.5 py-1 rounded-md shadow-sm">{{ item.purpose }}</span>
+                <span class="bg-white/90 backdrop-blur text-gray-900 text-[12px] font-semibold px-2.5 py-1 rounded-md shadow-sm">{{ item.type }}</span>
               </div>
 
-              <div class="flex items-center gap-4 text-xs border-t border-gray-50 pt-3 text-gray-600">
-                <span class="flex items-center gap-1">
-                  <strong>{{ item.beds }}</strong> Bed
-                </span>
-                <span class="flex items-center gap-1">
-                  <strong>{{ item.sqft }}</strong> Sqft
-                </span>
-                <span v-if="item.hasPool" class="ml-auto text-[10px] bg-blue-50 text-blue-600 px-2 py-0.5 rounded font-medium">Pool</span>
-                <span v-if="item.hasParking" :class="item.hasPool ? '' : 'ml-auto'" class="text-[10px] bg-emerald-50 text-emerald-600 px-2 py-0.5 rounded font-medium">Parking</span>
+              <!-- Bookmark Quickaction Toggle Icon Pillar Action Grid overlay -->
+              <button class="absolute bottom-4 right-4 bg-white/90 backdrop-blur text-gray-900 p-2 rounded-lg shadow-sm hover:bg-white transition-colors z-10">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z" />
+                </svg>
+              </button>
+            </div>
+
+            <!-- Description and Specs Parameters Text Content Metadata Wrapper block -->
+            <div class="flex flex-col gap-2">
+              <h4 class="text-xl font-bold tracking-tight text-gray-900 group-hover:text-amber-600 transition-colors">{{ item.title }}</h4>
+              
+              <!-- Location + Identifier Tag Panel Component Row layout -->
+              <div class="flex items-center gap-1.5 text-xs font-medium text-gray-400">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-3.5 h-3.5 text-gray-400 shrink-0">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+                </svg>
+                <span>{{ item.location }}</span>
+                <span class="w-1 h-1 rounded-full bg-gray-300 mx-0.5"></span>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-3.5 h-3.5 text-gray-400 shrink-0">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 00.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+                </svg>
+                <span>0{{ item.id }}</span>
+              </div>
+
+              <p class="text-[13.5px] text-gray-500 leading-relaxed line-clamp-2 mt-1">
+                {{ item.description }}
+              </p>
+
+              <!-- Metrics Vector Line Data Badges Grid Row -->
+              <div class="flex items-center gap-4 text-xs font-semibold text-gray-500 mt-2">
+                <div class="flex items-center gap-1">
+                  <span class="text-gray-400 font-normal">🛏</span> {{ item.beds }}+ Rooms
+                </div>
+                <div class="flex items-center gap-1">
+                  <span class="text-gray-400 font-normal">🛁</span> {{ item.baths }}+ Bathroom
+                </div>
+                <div class="flex items-center gap-1">
+                  <span class="text-gray-400 font-normal">📐</span> {{ item.sqft }} ft²
+                </div>
+              </div>
+
+              <!-- Price Block Element -->
+              <div class="text-[17px] font-bold text-gray-900 mt-2">
+                $ {{ item.price.toLocaleString() }}<span v-if="item.purpose === 'Rent'" class="text-xs font-medium text-gray-400"> /mo</span>
               </div>
             </div>
-          </article>
+          </div>
         </div>
       </div>
 
     </div>
 
+    <!-- Mobile Filter Drawer overlay view -->
     <div 
       class="md:hidden fixed inset-0 z-50 flex items-end justify-center transition-opacity duration-300"
       :class="isFiltersDrawerOpen ? 'pointer-events-auto' : 'pointer-events-none'"
@@ -268,12 +295,28 @@
         </div>
 
         <div class="flex flex-col gap-6 overflow-y-auto pb-8">
+          <!-- Mobile Purpose Filter Grid Segment -->
+          <div>
+            <label class="block text-xs font-semibold text-gray-700 mb-2">Listing Purpose</label>
+            <div class="grid grid-cols-3 gap-1.5 bg-gray-50 p-1 border border-gray-200 rounded-xl">
+              <button 
+                v-for="purpose in ['', 'Sale', 'Rent']" 
+                :key="'mob-purp-'+purpose"
+                @click="filters.purpose = purpose"
+                :class="filters.purpose === purpose ? 'bg-gray-900 text-white shadow-sm' : 'text-gray-600'"
+                class="py-2.5 text-xs font-medium rounded-lg transition-all"
+              >
+                {{ purpose === '' ? 'All Purpose' : purpose }}
+              </button>
+            </div>
+          </div>
+
           <div>
             <label class="block text-xs font-semibold text-gray-700 mb-2">Property Category Type</label>
             <select v-model="filters.type" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none">
               <option value="">All Types Available</option>
               <option value="Apartment">Apartment</option>
-              <option value="Villa">Villa / House</option>
+              <option value="Houses">Houses</option>
               <option value="Studio">Studio</option>
               <option value="Office">Commercial Office</option>
             </select>
@@ -292,27 +335,13 @@
             <div class="grid grid-cols-4 gap-1.5 bg-gray-50 p-1 border border-gray-200 rounded-xl">
               <button 
                 v-for="rooms in ['', '1', '2', '3+']" 
-                :key="'mob-'+rooms"
+                :key="'mob-rms-'+rooms"
                 @click="filters.bedrooms = rooms"
                 :class="filters.bedrooms === rooms ? 'bg-gray-900 text-white shadow-sm' : 'text-gray-600'"
                 class="py-2.5 text-xs font-medium rounded-lg transition-all"
               >
                 {{ rooms === '' ? 'Any' : rooms }}
               </button>
-            </div>
-          </div>
-
-          <div>
-            <label class="block text-xs font-semibold text-gray-700 mb-2">Required Core Utilities</label>
-            <div class="grid grid-cols-2 gap-3">
-              <label class="flex items-center gap-3 bg-gray-50 border border-gray-100 p-3 rounded-xl cursor-pointer select-none">
-                <input type="checkbox" v-model="filters.pool" class="w-4 h-4 rounded border-gray-300 text-amber-500 focus:ring-amber-500/20">
-                <span class="text-xs font-medium text-gray-700">Swimming Pool</span>
-              </label>
-              <label class="flex items-center gap-3 bg-gray-50 border border-gray-100 p-3 rounded-xl cursor-pointer select-none">
-                <input type="checkbox" v-model="filters.parking" class="w-4 h-4 rounded border-gray-300 text-amber-500 focus:ring-amber-500/20">
-                <span class="text-xs font-medium text-gray-700">Private Parking</span>
-              </label>
             </div>
           </div>
         </div>
@@ -335,44 +364,37 @@
 
     createApp({
       setup() {
-        // Reactive Global Search Strings
         const searchQuery = ref('');
-        
-        // Drawer Visibility Toggle Flag Status Control
         const isFiltersDrawerOpen = ref(false);
 
-        // Core Filter Values Form Models Structure
+        // Filter Models (Replaced amenities with purpose string context)
         const filters = ref({
+          purpose: '',
           type: '',
           maxPrice: null,
-          bedrooms: '',
-          pool: false,
-          parking: false
+          bedrooms: ''
         });
 
-        // Sample Property Database Dataset Array List
+        // Expanded dataset mapped natively with original template attributes
         const properties = ref([
-          { id: 1, title: 'Skyline Modern Apartment', type: 'Apartment', price: 2400, beds: 2, sqft: 1150, location: 'Downtown Financial Hub', hasPool: true, hasParking: true, image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=600&q=80' },
-          { id: 2, title: 'Sunset Serenity Luxury House', type: 'Villa', price: 5800, beds: 4, sqft: 3400, location: 'Beverly Hills Outskirts', hasPool: true, hasParking: true, image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=600&q=80' },
-          { id: 3, title: 'Minimalist Industrial Loft Studio', type: 'Studio', price: 1650, beds: 1, sqft: 680, location: 'Arts District Extension', hasPool: false, hasParking: true, image: 'https://images.unsplash.com/photo-1536376072261-38c75010e6c9?auto=format&fit=crop&w=600&q=80' },
-          { id: 4, title: 'Corporate High-Rise Office Deck', type: 'Office', price: 8900, beds: 0, sqft: 4200, location: 'Midtown Commerce Tower', hasPool: false, hasParking: true, image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=80' },
-          { id: 5, title: 'Greenwood Cozy Family Townhouse', type: 'Villa', price: 3100, beds: 3, sqft: 1850, location: 'Suburban Greenways', hasPool: true, hasParking: false, image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80' },
-          { id: 6, title: 'Urban Edge Premium Studio', type: 'Studio', price: 1400, beds: 1, sqft: 550, location: 'Metro Central Boulevard', hasPool: false, hasParking: false, image: 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=600&q=80' }
+          { id: 1, title: 'Cozy Condo', type: 'Houses', purpose: 'Rent', price: 466000, beds: 4, baths: 4, sqft: 600, location: 'Catskills', description: 'Nestled amidst serene woodlands, this luxury house gracefully sits atop a hill...', image: 'static/latest01.avif' },
+          { id: 2, title: 'Skyline Modern Apartment', type: 'Apartment', purpose: 'Rent', price: 2400, beds: 2, baths: 2, sqft: 1150, location: 'Downtown Financial Hub', description: 'Breathtaking urban architecture setting clean panoramic lines directly overlooking financial parks.', image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=600&q=80' },
+          { id: 3, title: 'Sunset Serenity Luxury Villa', type: 'Houses', purpose: 'Sale', price: 1250000, beds: 4, baths: 5, sqft: 3400, location: 'Beverly Hills Outskirts', description: 'A magnificent estate handling private courtyards, expansive lounge suites, and architectural floorplans.', image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=600&q=80' },
+          { id: 4, title: 'Minimalist Industrial Loft Studio', type: 'Studio', purpose: 'Rent', price: 1650, beds: 1, baths: 1, sqft: 680, location: 'Arts District Extension', description: 'High raw concrete brick configurations matching pristine floor-to-ceiling modern black frames.', image: 'https://images.unsplash.com/photo-1536376072261-38c75010e6c9?auto=format&fit=crop&w=600&q=80' },
+          { id: 5, title: 'Corporate High-Rise Office Deck', type: 'Office', purpose: 'Sale', price: 2890000, beds: 0, baths: 4, sqft: 4200, location: 'Midtown Commerce Tower', description: 'Expansive commercial operations facility featuring executive boardroom modules and premium fit-outs.', image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=80' },
+          { id: 6, title: 'Greenwood Family Townhouse', type: 'Houses', purpose: 'Sale', price: 610000, beds: 3, baths: 2, sqft: 1850, location: 'Suburban Greenways', description: 'Charming multi-level layout architecture providing peaceful outdoor landscaping perfect for families.', image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80' }
         ]);
 
-        // Computed Active Flags Metric Evaluation
         const hasActiveFilters = computed(() => {
-          return filters.value.type !== '' || 
+          return filters.value.purpose !== '' || 
+                 filters.value.type !== '' || 
                  filters.value.maxPrice !== null || 
-                 filters.value.bedrooms !== '' || 
-                 filters.value.pool || 
-                 filters.value.parking;
+                 filters.value.bedrooms !== '';
         });
 
-        // Filter Pipeline Handling Matrix Sorting
+        // Refined logical filters pipeline handling type, purpose, cost and capacity queries
         const filteredProperties = computed(() => {
           return properties.value.filter(item => {
-            // Text Keyword Target Filter Match
             if (searchQuery.value) {
               const query = searchQuery.value.toLowerCase();
               const matchesTitle = item.title.toLowerCase().includes(query);
@@ -380,17 +402,18 @@
               if (!matchesTitle && !matchesLocation) return false;
             }
 
-            // Dropdown Property Category Match
+            if (filters.value.purpose && item.purpose !== filters.value.purpose) {
+              return false;
+            }
+
             if (filters.value.type && item.type !== filters.value.type) {
               return false;
             }
 
-            // Upper Bound Cap Budget Metric Evaluation Check
             if (filters.value.maxPrice !== null && filters.value.maxPrice !== '') {
               if (item.price > filters.value.maxPrice) return false;
             }
 
-            // Bedroom Specific Segment Filter Selection Matching Check
             if (filters.value.bedrooms) {
               if (filters.value.bedrooms === '3+') {
                 if (item.beds < 3) return false;
@@ -399,25 +422,18 @@
               }
             }
 
-            // Boolean Amenity Checklist Matches
-            if (filters.value.pool && !item.hasPool) return false;
-            if (filters.value.parking && !item.hasParking) return false;
-
             return true;
           });
         });
 
-        // Drawer Presentation Visibility Updates Toggles
         const openFiltersDrawer = () => { isFiltersDrawerOpen.value = true; };
         const closeFiltersDrawer = () => { isFiltersDrawerOpen.value = false; };
 
-        // Clears state variables to reset fields instantly
         const resetFilters = () => {
+          filters.value.purpose = '';
           filters.value.type = '';
           filters.value.maxPrice = null;
           filters.value.bedrooms = '';
-          filters.value.pool = false;
-          filters.value.parking = false;
         };
 
         return {
